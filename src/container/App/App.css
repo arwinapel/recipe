@@ -1,6 +1,14 @@
 .App-container {
+    background-color: var(--background-color);
     text-align: center;
-    width: 100vw;
     height: 100vh;
     padding: 1em;
+}
+
+.body-container {
+    padding: 0.5em;
+}
+
+.btn-get-recipe {
+    width: 100%;
 }

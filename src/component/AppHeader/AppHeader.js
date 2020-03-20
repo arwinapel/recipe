@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import DateFnsUtil from "@date-io/date-fns";
+import Button from "@material-ui/core/Button";
+import './AppHeader.css';
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from "@material-ui/pickers";
 
-function AppHeader({selectedDate, handleDateChange}) {
+function AppHeader({selectedDate, handleDateChange, getIngredients}) {
     return (
         <div className={"appheader-container"}>
             <MuiPickersUtilsProvider utils={DateFnsUtil}>
@@ -11,9 +13,7 @@ function AppHeader({selectedDate, handleDateChange}) {
                     disableToolbar
                     variant="inline"
                     format="MM/dd/yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    label="Date picker inline"
+                    label="Choose Date"
                     value={selectedDate}
                     onChange={handleDateChange}
                     KeyboardButtonProps={{
@@ -21,6 +21,16 @@ function AppHeader({selectedDate, handleDateChange}) {
                     }}
                     inputProps={{'data-testid': 'input-date'}}
                 />
+                <Button
+                    className={'btn-check-ingredient'}
+                    data-testid={"check-ingredient-btn"}
+                    variant={"contained"}
+                    color={"primary"}
+                    disableElevation
+                    onClick={getIngredients}
+                >
+                    Check Ingredients
+                </Button>
             </MuiPickersUtilsProvider>
         </div>
     )
@@ -28,7 +38,8 @@ function AppHeader({selectedDate, handleDateChange}) {
 
 AppHeader.propTypes = {
     selectedDate: PropTypes.object.isRequired,
-    handleDateChange: PropTypes.func.isRequired
+    handleDateChange: PropTypes.func.isRequired,
+    getIngredients: PropTypes.func.isRequired
 };
 
 export default AppHeader;

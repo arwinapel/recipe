@@ -1,6 +1,7 @@
 :root {
     --primary-color: #3884ff;
     --secondary-color: #33ffff;
+    --background-color: #dbdbdb;
 
     --font-size: 10em;
 }
@@ -12,6 +13,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
 }
 
 code {
