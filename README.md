@@ -37,4 +37,4 @@ For Build apps:
 - axios 
 
 ### For mocking API
-- json-server (Please [install](https://www.npmjs.com/package/json-server) this to run mock API)
+- json-server
