@@ -11,6 +11,7 @@ function Ingredients({data, selectedData, addIngredient}) {
             selected={selectedData.includes(el.title)}
             title={el.title}
             useBy={el['use-by']}
+            disabled={new Date(el['use-by']).getTime() < new Date().getTime()}
             addIngredient={addIngredient}
         />
     ));

@@ -4,13 +4,14 @@ import "./Ingredient.css";
 import ListItemText from '@material-ui/core/ListItemText';
 import {Checkbox, ListItemIcon, ListItem} from "@material-ui/core";
 
-function Ingredient({title, useBy, addIngredient, selected}) {
+function Ingredient({title, useBy, addIngredient, selected, disabled}) {
     return (
         <ListItem
             dense
             button
             data-testid={'ingredient'}
             onClick={() => addIngredient(title)}
+            disabled={disabled}
         >
             <ListItemIcon>
                 <Checkbox
@@ -41,7 +42,8 @@ Ingredient.propTypes = {
     title: PropTypes.string.isRequired,
     useBy: PropTypes.string.isRequired,
     addIngredient: PropTypes.func.isRequired,
-    select: PropTypes.bool
+    select: PropTypes.bool,
+    disabled: PropTypes.bool
 }
 
 export default Ingredient;

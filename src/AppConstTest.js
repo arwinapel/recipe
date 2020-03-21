@@ -52,5 +52,6 @@ export const ingredient = {
     title: 'Ham',
     useBy: '2019-12-12',
     addIngredient: addIngredient,
+    disabled: new Date('2019-12-12').getTime() < new Date().getTime(),
     selectedData: [],
 };

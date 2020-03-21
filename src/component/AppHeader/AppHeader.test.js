@@ -8,7 +8,7 @@ import {URL_INGREDIENTS} from "../../AppConst";
 jest.mock('axios');
 
 const appHeader = {
-    selectedDate: new Date("03/20/2020"),
+    selectedDate: new Date(),
     handleDateChange: jest.fn(),
     getIngredients: jest.fn()
 };
@@ -20,7 +20,7 @@ describe("AppHeader", () => {
         const {getByTestId} = render(<AppHeader {...appHeader} />);
         const inputDate = getByTestId('input-date');
         expect(inputDate).toBeInTheDocument();
-        expect(new Date(inputDate.value).toDateString()).toBe(new Date().toDateString());
+        expect(new Date(inputDate.value).toLocaleDateString()).toBe(new Date().toLocaleDateString());
         fireEvent.change(inputDate, {target: {value: TOMORROW}})
         expect(inputDate.value).toBe(TOMORROW)
     });

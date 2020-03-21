@@ -1,25 +1,14 @@
 import React from 'react';
-import {cleanup, render, fireEvent, wait, waitForElement} from '@testing-library/react';
+import {cleanup, fireEvent, render, wait, waitForElement} from '@testing-library/react';
 import App from './App';
 import axiosMock from 'axios';
 import {URL_INGREDIENTS, URL_RECIPES} from "../../AppConst";
-import {addIngredient, getRecipe, successIngredients, successRecipe, TOMORROW} from "../../AppConstTest";
-import Ingredients from "../../component/Ingredients/Ingredients";
+import {successIngredients, successRecipe, TOMORROW} from "../../AppConstTest";
 
 jest.mock('axios');
 
-
 describe("App", () => {
     afterEach(cleanup);
-    it("Renders input date, value, onChange", () => {
-        const {asFragment, getByTestId} = render(<App/>);
-        const inputDate = getByTestId('input-date');
-        expect(inputDate).toBeInTheDocument();
-        expect(new Date(inputDate.value).toDateString()).toBe(new Date().toDateString());
-        fireEvent.change(inputDate, {target: {value: TOMORROW}})
-        expect(inputDate.value).toBe(TOMORROW)
-        expect(asFragment()).toMatchSnapshot();
-    });
 
     it("Render child", async () => {
         const {asFragment, getAllByTestId, getByTestId, rerender, queryByText} = render(<App/>);
@@ -57,6 +46,6 @@ describe("App", () => {
         const titleIngredients = getAllByTestId('title-ingredient');
         expect(axiosMock.get).toHaveBeenCalledWith(`${URL_RECIPES}?.ingredients=${titleIngredients[0].textContent}`);
         expect(listRecipe).toBeInTheDocument();
-        expect(asFragment()).toMatchSnapshot();
+        // expect(asFragment()).toMatchSnapshot();
     });
 });

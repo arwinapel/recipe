@@ -15,5 +15,5 @@ describe("Ingredient", () => {
         const {getByTestId} = render(<Ingredient {...ingredient}/>)
         fireEvent.click(getByTestId('ingredient'));
         expect(addIngredient).toHaveBeenCalledTimes(1);
-    })
+    });
 });
